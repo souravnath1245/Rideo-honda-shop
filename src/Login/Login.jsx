@@ -35,7 +35,6 @@ const Login = () => {
   const handleGoogleSignIn =()=>{
       signInWithGoogle()
   }
-  console.log(user.email)
   return (
     <div style={formGroup} className="loginFormSection">
       <div className="loginForm">

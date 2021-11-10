@@ -4,9 +4,11 @@ import { HashLink } from "react-router-hash-link";
 import useFirebase from "../hooks/useFirebase";
 
 const Navlink = () => {
-  const { user } = useFirebase();
+  const { user, userLogOut } = useFirebase();
+  const handleLogOut = () => {
+    userLogOut();
+  };
 
-  console.log(user.email);
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -16,12 +18,21 @@ const Navlink = () => {
             <Nav.Link as={HashLink} to="/home">
               Home
             </Nav.Link>
-            <Nav.Link as={HashLink} to="/login">
-              Login
-            </Nav.Link>
+            {user.email ? (
+              <button
+              onClick={handleLogOut}
+                className="btn btn-outline-primary text-white mx-2"
+              >
+                LogOut
+              </button>
+            ) : (
+              <Nav.Link as={HashLink} to="/login">
+                Login
+              </Nav.Link>
+            )}
             {user?.email ? (
               <Navbar.Text>
-              Signed in as: <a href="#login">{user?.displayName}</a>
+                Signed in as: <a href="#login">{user?.displayName }</a>
               </Navbar.Text>
             ) : (
               <p></p>
