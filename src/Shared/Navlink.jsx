@@ -1,26 +1,37 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
-import useFirebase from "../hooks/useFirebase";
+import useAuth from "../hooks/useAuth";
 
 const Navlink = () => {
-  const { user, userLogOut } = useFirebase();
+  const { user, userLogOut } = useAuth();
   const handleLogOut = () => {
     userLogOut();
   };
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar fixed="top" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand to="/">Navbar</Navbar.Brand>
+          <Navbar.Brand as={HashLink} to="/">Navbar</Navbar.Brand>
           <Navbar.Collapse className="justify-content-end">
-            <Nav.Link as={HashLink} to="/home">
+            <Nav.Link as={HashLink} to="/home#banner">
               Home
             </Nav.Link>
+            
+            <Nav.Link as={HashLink} to="/home#products">
+              Products
+            </Nav.Link>
+            <Nav.Link as={HashLink} to="/home#extra">
+              Speciality
+            </Nav.Link>
+            <Nav.Link as={HashLink} to="/home#reviews">
+              Reviews
+            </Nav.Link>
+
             {user.email ? (
               <button
-              onClick={handleLogOut}
+                onClick={handleLogOut}
                 className="btn btn-outline-primary text-white mx-2"
               >
                 LogOut
@@ -32,7 +43,7 @@ const Navlink = () => {
             )}
             {user?.email ? (
               <Navbar.Text>
-                Signed in as: <a href="#login">{user?.displayName }</a>
+                Signed in as: <a href="#login">{user?.displayName}</a>
               </Navbar.Text>
             ) : (
               <p></p>

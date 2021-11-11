@@ -9,13 +9,13 @@ const Banner = () => {
         backgroundRepeat: "no-repeat",
     }
   return (
-    <div className="bannerSection" style={bannerBackground}>
+    <div id="banner" className="bannerSection" style={bannerBackground}>
       <div className="bannerImage ">
         <img className="" src={banner} alt="Banner Honda" />
       </div>
-      {/* <div className="bannerContent">
-
-      </div> */}
+      <div className="bannerContent">
+        <h1>This is banner pages</h1>
+      </div>
     </div>
   );
 };

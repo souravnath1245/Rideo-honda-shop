@@ -1,0 +1,23 @@
+.singleProductSection{
+    padding-bottom: 80px;
+}
+.productDetails .image{
+    width: 550px;
+    height: 490px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+ 
+.productDetails .image img{
+    width: 100%;
+    margin-top:-70px;
+}
+
+.buyProductForm{
+    width: 600px ;
+    margin: 0 auto;
+    border : 1px solid black;
+    
+}
+/* .formDevition {
+} */
