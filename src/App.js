@@ -14,6 +14,7 @@ import AuthProvider from "./context/AuthProvider";
 // import AddProducts from "./components/Admin/AddProducts";
 import BuyProduct from "./components/BuyProduct/BuyProduct";
 import PrivateRoute from './context/PrivateRoute/PrivateRoute';
+import DashBoard from "./pages/DashBoard/DashBoard";
 
 function App() {
   
@@ -28,10 +29,13 @@ function App() {
           <Route  path="/login">
             <Login />
           </Route>
+          
           <Route  path="/register">
             <Register />
           </Route>
-          
+          <PrivateRoute  path="/dashboard">
+            <DashBoard />
+          </PrivateRoute>
           {/* <Route  path="/addProducts">
             <AddProducts />
           </Route> */}

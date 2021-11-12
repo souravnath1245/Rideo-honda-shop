@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -14,25 +14,26 @@ const BuyProduct = () => {
   const { user } = useAuth();
   const [singleProduct, setSingleProduct] = useState({});
   const [value, setValue] = React.useState(new Date());
-
-  // const initialInfo = {
-  //   clientName: user.displayName,
-  //   email: user.email,
-  //   phone: "",
-  //   address: "",
-  // };
-  const [bookingInfo, setBookingInfo] = React.useState({});
-
-  const date = value.toLocaleDateString();
   const { id } = useParams();
+  const date = value.toLocaleDateString()
+
+  const location = useLocation();
+  const history = useHistory();
+
+  const initialInfo = {
+    clientName: user.displayName,
+    email: user.email,
+    phone: "",
+    address: "",
+  };
+  const [bookingInfo, setBookingInfo] = React.useState(initialInfo);
+
   useEffect(() => {
     fetch(`http://localhost:5000/products/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleProduct(data));
   }, [id]);
 
-  const name = singleProduct.name;
-  // console.log(name);
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -46,26 +47,27 @@ const BuyProduct = () => {
     // collect data
     const appointment = {
       ...bookingInfo,
-      serviceName: name,
-      date: date.toLocaleDateString(),
+      productName : singleProduct.name,
+      price : singleProduct.price,
+      date ,
     };
     console.log(appointment)
     // send to the server
-    fetch("http://localhost:5000/bookingProducts", {
-      method: "POST",
+    fetch("http://localhost:5000/bookingClient", {
+      method: "POST", 
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(appointment),
     })
       .then((res) => res.json())
-      // .then((data) => {
-      //   if (data.insertedId) {
-      //     alert("Successfully Added");
-      //     //   setBookingSuccess(true);
-      //     //   handleBookingClose();
-      //   }
-      // });
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Successfully Added");
+          history.replace("/")
+        }
+      })
+      // .finally(history.replace('/'))
       e.preventDefault()
   };
 
@@ -114,7 +116,6 @@ const BuyProduct = () => {
             <form onSubmit={handleBookingSubmit}>
               <TextField
                 sx={{ width: "90%" }}
-                disabled
                 id="standard-basic"
                 name="Date"
                 variant="standard"
@@ -124,7 +125,7 @@ const BuyProduct = () => {
               <TextField
                 sx={{ width: "90%" }}
                 id="standard-basic"
-                name="clientName"
+                 name="clientName"
                 defaultValue={user.displayName}
                 onBlur={handleOnBlur}
                 variant="standard"

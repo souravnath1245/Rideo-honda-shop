@@ -1,3 +1,4 @@
+import { Box } from "@mui/system";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
@@ -28,14 +29,21 @@ const Navlink = () => {
             <Nav.Link as={HashLink} to="/home#reviews">
               Reviews
             </Nav.Link>
+            
+            
 
             {user.email ? (
+              <Box>
+                <Nav.Link as={HashLink} to="/dashboard">
+              DashBoard
+            </Nav.Link>
               <button
                 onClick={handleLogOut}
                 className="btn btn-outline-primary text-white mx-2"
               >
                 LogOut
               </button>
+              </Box>
             ) : (
               <Nav.Link as={HashLink} to="/login">
                 Login
