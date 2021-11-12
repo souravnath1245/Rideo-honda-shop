@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Switch, Route, Link} from "react-router-dom"
+// import {Switch, Route, Link} from "react-router-dom"
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -18,12 +18,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DashboardHome from '../../components/SubDashBoard/DashBoardHome/DashboardHome';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
+import MakeAdmin from '../../components/SubDashBoard/MakeAdmin/MakeAdmin';
+import useAuth from './../../hooks/useAuth';
+import AddProducts from './../../components/AddProduct/AddProducts';
 
 const drawerWidth = 180;
 
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  let { path, url } = useRouteMatch();
+  const {admin, userLogOut} = useAuth();
+  console.log(admin)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -33,12 +46,21 @@ function DashBoard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <Link to="/"><Button color="inherit">Home</Button></Link>
-            {/* <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
-            {admin && <Box>
-                <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-                <Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link>
-            </Box>} */}
+      <Link to="/"><Button color="inherit">Home</Button></Link><br/>
+      <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link><br/>
+     {!admin &&
+     <Box>
+      <Link to={`${url}`}><Button color="inherit">Pay Link</Button></Link><br/>
+      <Link to={`${url}`}><Button color="inherit">Review</Button></Link><br/>
+      </Box>}
+      
+      {admin && <Box>
+          <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+          <Link to={`${url}/addProducts`}><Button color="inherit">Add A product</Button></Link>
+          <Link to={`${url}/addProducts`}><Button color="inherit">Manaze All Orders</Button></Link>
+          <Link to={`${url}/addProducts`}><Button color="inherit">Manage Products</Button></Link>
+      </Box>}
+      <Button onClick={()=>userLogOut()} variant="contained" color="inherit">LogOut</Button><br/>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -117,15 +139,15 @@ function DashBoard(props) {
       >
         <Toolbar />
         <Switch>
-                    <Route exact>
+                    <Route exact path={`${path}`}>
                         <DashboardHome />
                     </Route>
-                    {/* <AdminRoute path={`${path}/makeAdmin`}>
-                        <MakeAdmin></MakeAdmin>
-                    </AdminRoute>
-                    <AdminRoute path={`${path}/addDoctor`}>
-                        <AddDoctor></AddDoctor>
-                    </AdminRoute> */}
+                    <Route path={`${path}/makeAdmin`}>
+                       <MakeAdmin/>
+                    </Route>
+                    <Route path={`${path}/addProducts`}>
+                        <AddProducts/>
+                    </Route>
                 </Switch>
       </Box>
     </Box>
