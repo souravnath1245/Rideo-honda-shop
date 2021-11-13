@@ -89,6 +89,10 @@
         font-size: 30px;
         font-weight: 600px;
     }
+    .productDetailsSection{
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
     .productSection{
     
         grid-template-columns: repeat(1, 1fr);

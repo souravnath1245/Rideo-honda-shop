@@ -39,7 +39,7 @@ const Products = () => {
                   <strong>${product.price}</strong>
                 </span>
               </div>
-              <Card.Text>{product.details}</Card.Text>
+              <Card.Text>{product.details.slice(0,100)}</Card.Text>
               <Link to={`products/${product._id}`}>
                 <Button
                   onClick={() => handleAddItems(product._id)}

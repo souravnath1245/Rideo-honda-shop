@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation, useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -17,7 +17,6 @@ const BuyProduct = () => {
   const { id } = useParams();
   const date = value.toLocaleDateString();
 
-  const location = useLocation();
   const history = useHistory();
 
   const initialInfo = {
@@ -48,6 +47,7 @@ const BuyProduct = () => {
       ...bookingInfo,
       productName: singleProduct.name,
       price: singleProduct.price,
+      productImage : singleProduct.image,
       date,
     };
     console.log(appointment);

@@ -16,6 +16,9 @@ const AddProducts = () => {
     const image = productImage.current.value;
 
     const newProduct = { name, price, rating, details, image };
+    console.log(newProduct)
+
+    // https://whispering-bayou-15079.herokuapp.com
     fetch("https://whispering-bayou-15079.herokuapp.com/products", {
       method: "POST",
       headers: {
