@@ -17,7 +17,6 @@ const Banner = () => {
       <div className="bannerContent">
         <h1
           className="text-center  text-uppercase"
-          style={{ fontSize: "100px", fontWeight: 900 }}
         >
           MoTorCycle
         </h1>

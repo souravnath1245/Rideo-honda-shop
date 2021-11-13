@@ -66,12 +66,11 @@ const BookingProducts = (props) => {
         if (data.deletedCount > 0) {
           alert("Successfully Deleted...");
 
-          // const remainingUsers = user.filter((m) => m._id !== id);
-          // setUser(remainingUsers);
+          const remainingUsers = clients.filter((c) => c._id !== id);
+          setClients(remainingUsers);
         }
       });
 
-    console.log(id);
   };
 
   return (

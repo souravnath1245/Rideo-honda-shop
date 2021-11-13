@@ -29,6 +29,7 @@ import MakeAdmin from '../../components/SubDashBoard/MakeAdmin/MakeAdmin';
 import useAuth from './../../hooks/useAuth';
 import AddProducts from './../../components/AddProduct/AddProducts';
 import Review from '../../components/SubDashBoard/Review/Review';
+import PayLink from '../../components/PayLink/PayLink';
 
 const drawerWidth = 180;
 
@@ -51,7 +52,8 @@ function DashBoard(props) {
       <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link><br/>
      {!admin &&
      <Box>
-      <Link to={`${url}`}><Button color="inherit">Pay Link</Button></Link><br/>
+      <Link to={`${url}/paylink`}><Button color="inherit">Pay Link</Button></Link><br/>
+      <Link to={`${url}/myorder`}><Button color="inherit">My Order</Button></Link><br/>
       <Link to={`${url}/review`}><Button color="inherit">Review</Button></Link><br/>
       </Box>}
       
@@ -152,6 +154,13 @@ function DashBoard(props) {
                     <Route path={`${path}/addProducts`}>
                         <AddProducts/>
                     </Route>
+                    <Route path={`${path}/paylink`}>
+                        <PayLink/>
+                    </Route>
+                    <Route path={`${path}/myorder`}>
+                        <PayLink/>
+                    </Route>
+                    
                 </Switch>
       </Box>
     </Box>

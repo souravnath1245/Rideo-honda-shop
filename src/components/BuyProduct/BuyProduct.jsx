@@ -72,10 +72,9 @@ const BuyProduct = () => {
 
   return (
     <div>
-      <p>{id}</p>
       <div className="singleProductSection">
         <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
+          <Grid container sx={{alignItmes:"center "}} className="product2Section" spacing={2}>
             <Grid item xs={12} lg={5}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <StaticDatePicker
@@ -98,7 +97,7 @@ const BuyProduct = () => {
                     srcset=""
                   />
                 </div>
-                <div className="content">
+                <div className="productContent">
                   <h1>{singleProduct.name}</h1>
                   <p>{singleProduct.details}</p>
                   <p>
@@ -114,7 +113,7 @@ const BuyProduct = () => {
             <Box>
               <form onSubmit={handleBookingSubmit}>
                 <TextField
-                  sx={{ width: "90%" }}
+                  sx={{ width: "90%" ,fontSize: "30px", mb:2 }}
                   id="standard-basic"
                   name="Date"
                   variant="standard"
@@ -122,7 +121,7 @@ const BuyProduct = () => {
                   size="small"
                 />
                 <TextField
-                  sx={{ width: "90%" }}
+                  sx={{ width: "90%",fontSize: "30px", mb:2 }}
                   id="standard-basic"
                   name="clientName"
                   defaultValue={user.displayName}
@@ -132,7 +131,7 @@ const BuyProduct = () => {
                 />
 
                 <TextField
-                  sx={{ width: "90%" }}
+                  sx={{ width: "90%",fontSize: "30px", mb:2 }}
                   id="standard-basic"
                   name="email"
                   variant="standard"
@@ -141,7 +140,7 @@ const BuyProduct = () => {
                   size="small"
                 />
                 <TextField
-                  sx={{ width: "90%" }}
+                  sx={{ width: "90%" ,fontSize: "30px", mb:2 }}
                   id="standard-basic"
                   name="address"
                   onBlur={handleOnBlur}
@@ -149,7 +148,7 @@ const BuyProduct = () => {
                   size="small"
                 />
                 <TextField
-                  sx={{ width: "90%" }}
+                  sx={{ width: "90%" ,fontSize: "30px", mb:2}}
                   id="standard-basic"
                   name="phone"
                   onBlur={handleOnBlur}

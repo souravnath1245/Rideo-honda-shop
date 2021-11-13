@@ -12,10 +12,12 @@ const Navlink = () => {
 
   return (
     <>
-      <Navbar fixed="top" bg="dark" variant="dark">
+      <Navbar fixed="top" expand="lg" bg="dark" variant="dark" collapseOnSelect>
         <Container>
           <Navbar.Brand as={HashLink} to="/">Navbar</Navbar.Brand>
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+          <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
             <Nav.Link as={HashLink} to="/home#banner">
               Home
             </Nav.Link>

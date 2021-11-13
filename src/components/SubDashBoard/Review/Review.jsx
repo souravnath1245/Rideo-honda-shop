@@ -54,7 +54,7 @@ const Review = () => {
           <Box>
             <form onSubmit={handleReviewSubmit}>
               <TextField
-                sx={{ width: "90%" }}
+                sx={{ width: "90%" , mb:2}}
                 id="standard-basic"
                 name="clientName"
                 defaultValue={user.displayName}
@@ -64,7 +64,7 @@ const Review = () => {
               />
 
               <TextField
-                sx={{ width: "90%" }}
+                sx={{ width: "90%", mb:2 }}
                 id="standard-basic"
                 name="email"
                 variant="standard"
@@ -73,7 +73,7 @@ const Review = () => {
                 size="small"
               />
               <TextField
-                sx={{ width: "90%" }}
+                sx={{ width: "90%", mb:2 }}
                 id="standard-basic"
                 placeholder="Please type (1-5) to give me a rating "
                 name="rating"
@@ -88,7 +88,7 @@ const Review = () => {
                 name="clientMessage"
                 placeholder="Please Type Your Opinion."
                 onBlur={handleOnBlur}
-                style={{ width: "90%" }}
+                style={{ width: "90%" , mb:2}}
               />
               <Button type="submit" variant="contained">
                 Submit
