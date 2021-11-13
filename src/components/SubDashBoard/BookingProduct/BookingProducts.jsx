@@ -13,7 +13,7 @@ import Paper from "@mui/material/Paper";
 
 const BookingProducts = (props) => {
   const { date } = props;
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
   const [clients, setClients] = useState([]);
 
   useEffect(() => {

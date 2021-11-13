@@ -30,6 +30,7 @@ import useAuth from './../../hooks/useAuth';
 import AddProducts from './../../components/AddProduct/AddProducts';
 import Review from '../../components/SubDashBoard/Review/Review';
 import PayLink from '../../components/PayLink/PayLink';
+import MyOrders from './../../components/MyOrders/MyOrders';
 
 const drawerWidth = 180;
 
@@ -64,7 +65,7 @@ function DashBoard(props) {
           <Link to={`${url}/addProducts`}><Button color="inherit">Manage Products</Button></Link>
       </Box>}
       <Button onClick={()=>userLogOut()} variant="contained" color="inherit">LogOut</Button><br/>
-      <List>
+      {/* <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -73,7 +74,7 @@ function DashBoard(props) {
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </div>
   );
 
@@ -158,7 +159,7 @@ function DashBoard(props) {
                         <PayLink/>
                     </Route>
                     <Route path={`${path}/myorder`}>
-                        <PayLink/>
+                        <MyOrders/>
                     </Route>
                     
                 </Switch>
