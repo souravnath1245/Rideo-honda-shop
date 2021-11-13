@@ -16,7 +16,7 @@ const Products = () => {
   }
   return (
     <div id="products" className="productSection">
-      {products.map((product) => (
+      {products.slice(0,6).map((product) => (
         <div className="productCard">
           <Card style={{ width: "23rem" }}>
             <Card.Text className="text-center">

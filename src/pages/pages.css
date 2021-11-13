@@ -7,7 +7,21 @@
     width: 90%;
     margin-top: 40px;
 }
+.bannerContent{
+    margin-top:-100px;
+}
+.specialImage .image{
+    width: 500px;
 
+}
+.extraSection{
+    width: 97%;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+.specialImage img{
+    width: 100%;
+}
 /* Footer Section css  */
 
 .footerSection{
@@ -35,6 +49,17 @@
     font-size: 12px;
     color: rgb(56, 238, 71);
 }
-.extraSection{
-    height : 100vh;
+
+/* Product Details section */
+.productDetailsSection{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+}
+.reviewSection{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
 }

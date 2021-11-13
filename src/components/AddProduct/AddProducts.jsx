@@ -7,13 +7,7 @@ const AddProducts = () => {
   const productPrice = useRef();
   const productRating = useRef();
   const productImage = useRef();
-  //   const handleSubmit = (e) => {
-  //     const country = countryRef.current.value;
-  //     const place = placeRef.current.value;
-  //     const description = descriptionRef.current.value;
-  //     const image = imageRef.current.value;
-  //     const newUser = { country, place, description, image };
-  //   }
+  
   const handleSubmit = (e) => {
     const name = productName.current.value;
     const price = productPrice.current.value;
