@@ -15,7 +15,7 @@ const BuyProduct = () => {
   const [singleProduct, setSingleProduct] = useState({});
   const [value, setValue] = React.useState(new Date());
   const { id } = useParams();
-  const date = value.toLocaleDateString()
+  const date = value.toLocaleDateString();
 
   const location = useLocation();
   const history = useHistory();
@@ -29,11 +29,10 @@ const BuyProduct = () => {
   const [bookingInfo, setBookingInfo] = React.useState(initialInfo);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://whispering-bayou-15079.herokuapp.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleProduct(data));
   }, [id]);
-
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -47,14 +46,14 @@ const BuyProduct = () => {
     // collect data
     const appointment = {
       ...bookingInfo,
-      productName : singleProduct.name,
-      price : singleProduct.price,
-      date ,
+      productName: singleProduct.name,
+      price: singleProduct.price,
+      date,
     };
-    console.log(appointment)
+    console.log(appointment);
     // send to the server
-    fetch("http://localhost:5000/bookingClient", {
-      method: "POST", 
+    fetch("https://whispering-bayou-15079.herokuapp.com/bookingClient", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -64,11 +63,11 @@ const BuyProduct = () => {
       .then((data) => {
         if (data.insertedId) {
           alert("Successfully Added");
-          history.replace("/")
+          history.replace("/");
         }
-      })
-      // .finally(history.replace('/'))
-      e.preventDefault()
+      });
+    // .finally(history.replace('/'))
+    e.preventDefault();
   };
 
   return (
@@ -112,55 +111,55 @@ const BuyProduct = () => {
         </Box>
         <div className="buyProductForm">
           <div className="formDevition">
-          <Box >
-            <form onSubmit={handleBookingSubmit}>
-              <TextField
-                sx={{ width: "90%" }}
-                id="standard-basic"
-                name="Date"
-                variant="standard"
-                defaultValue={date}
-                size="small"
-              />
-              <TextField
-                sx={{ width: "90%" }}
-                id="standard-basic"
-                 name="clientName"
-                defaultValue={user.displayName}
-                onBlur={handleOnBlur}
-                variant="standard"
-                size="small"
-              />
+            <Box>
+              <form onSubmit={handleBookingSubmit}>
+                <TextField
+                  sx={{ width: "90%" }}
+                  id="standard-basic"
+                  name="Date"
+                  variant="standard"
+                  defaultValue={date}
+                  size="small"
+                />
+                <TextField
+                  sx={{ width: "90%" }}
+                  id="standard-basic"
+                  name="clientName"
+                  defaultValue={user.displayName}
+                  onBlur={handleOnBlur}
+                  variant="standard"
+                  size="small"
+                />
 
-              <TextField
-                sx={{ width: "90%" }}
-                id="standard-basic"
-                name="email"
-                variant="standard"
-                defaultValue={user.email}
-                onBlur={handleOnBlur}
-                size="small"
-              />
-              <TextField
-                sx={{ width: "90%" }}
-                id="standard-basic"
-                name="address"
-                onBlur={handleOnBlur}
-                variant="standard"
-                size="small"
-              />
-              <TextField
-                sx={{ width: "90%" }}
-                id="standard-basic"
-                name="phone"
-                onBlur={handleOnBlur}
-                variant="standard"
-                size="small"
-              />
-              <Button type="submit" variant="contained">
-                Submit
-              </Button>
-            </form>
+                <TextField
+                  sx={{ width: "90%" }}
+                  id="standard-basic"
+                  name="email"
+                  variant="standard"
+                  defaultValue={user.email}
+                  onBlur={handleOnBlur}
+                  size="small"
+                />
+                <TextField
+                  sx={{ width: "90%" }}
+                  id="standard-basic"
+                  name="address"
+                  onBlur={handleOnBlur}
+                  variant="standard"
+                  size="small"
+                />
+                <TextField
+                  sx={{ width: "90%" }}
+                  id="standard-basic"
+                  name="phone"
+                  onBlur={handleOnBlur}
+                  variant="standard"
+                  size="small"
+                />
+                <Button type="submit" variant="contained">
+                  Submit
+                </Button>
+              </form>
             </Box>
           </div>
         </div>

@@ -7,16 +7,16 @@ import ".././pages.css";
 const Products = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://whispering-bayou-15079.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  const handleAddItems=(id)=>{
+  const handleAddItems = (id) => {
     console.log(id);
-  }
+  };
   return (
     <div id="products" className="productSection">
-      {products.slice(0,6).map((product) => (
+      {products.slice(0, 6).map((product) => (
         <div className="productCard">
           <Card style={{ width: "23rem" }}>
             <Card.Text className="text-center">
@@ -40,8 +40,13 @@ const Products = () => {
                 </span>
               </div>
               <Card.Text>{product.details}</Card.Text>
-              <Link to={`products/${product._id}`} >
-              <Button onClick={()=>handleAddItems(product._id)} variant="primary">Add To Cart</Button>
+              <Link to={`products/${product._id}`}>
+                <Button
+                  onClick={() => handleAddItems(product._id)}
+                  variant="primary"
+                >
+                  Add To Cart
+                </Button>
               </Link>
             </Card.Body>
           </Card>

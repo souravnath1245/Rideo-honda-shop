@@ -56,10 +56,22 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     justify-items: center;
+}.sectionReview{
+    background-color: #f2f2f2;
 }
-.reviewSection{
+.reviewHeader h1{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.review2Section{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     justify-items: center;
+    padding: 80px 20px;
+    
+}
+.reviewContent{
+    width: 300px;
 }

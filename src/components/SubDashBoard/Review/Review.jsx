@@ -6,7 +6,7 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import "./review.css";
 
 const Review = () => {
-  const { user } = useAuth()
+  const { user } = useAuth();
   const initialData = {
     clientName: user.displayName,
     email: user.email,
@@ -30,18 +30,19 @@ const Review = () => {
     };
     console.log(appointment);
     // // send to the server
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://whispering-bayou-15079.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(appointment),
-    }).then((res) => res.json())
-    .then((data) => {
-        if (data.insertedId){
-            alert("Thanks For Your  review..")
-        }
     })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Thanks For Your  review..");
+        }
+      });
     // .finally(history.replace('/'))
     e.preventDefault();
   };

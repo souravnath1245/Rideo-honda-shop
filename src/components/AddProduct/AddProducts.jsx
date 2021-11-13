@@ -7,7 +7,7 @@ const AddProducts = () => {
   const productPrice = useRef();
   const productRating = useRef();
   const productImage = useRef();
-  
+
   const handleSubmit = (e) => {
     const name = productName.current.value;
     const price = productPrice.current.value;
@@ -16,21 +16,20 @@ const AddProducts = () => {
     const image = productImage.current.value;
 
     const newProduct = { name, price, rating, details, image };
-    fetch("http://localhost:5000/products",{
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(newProduct)
+    fetch("https://whispering-bayou-15079.herokuapp.com/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
     })
-    .then(res => res.json())
-    .then(data =>{
-        if (data.insertedId){
-            alert("Successfully Added")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Successfully Added");
         }
-    })
+      });
 
-    
     e.preventDefault();
   };
   return (
@@ -39,8 +38,6 @@ const AddProducts = () => {
         <h1 className="text-center">Add Products</h1>
         <div className="destinationSection ">
           <form onSubmit={handleSubmit}>
-
-              
             <label htmlFor="name">Product Name</label> <br />
             <input ref={productName} type="text" name="" id="" />
             <br />
@@ -52,7 +49,13 @@ const AddProducts = () => {
             <input ref={productPrice} type="number" name="" id="" />
             <br />
             <label htmlFor="number">Product Rating</label> <br />
-            <input ref={productRating} placeholder="please type (1-5)" type="number" name="" id="" />
+            <input
+              ref={productRating}
+              placeholder="please type (1-5)"
+              type="number"
+              name=""
+              id=""
+            />
             <br />
             <label htmlFor="name">Image Url</label>
             <br />
