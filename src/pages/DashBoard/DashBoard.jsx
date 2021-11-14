@@ -18,18 +18,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import DashboardHome from "../../components/SubDashBoard/DashBoardHome/DashboardHome";
-import {
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import MakeAdmin from "../../components/SubDashBoard/MakeAdmin/MakeAdmin";
 import useAuth from "./../../hooks/useAuth";
 import AddProducts from "./../../components/AddProduct/AddProducts";
 import Review from "../../components/SubDashBoard/Review/Review";
 import PayLink from "../../components/PayLink/PayLink";
 import MyOrders from "./../../components/MyOrders/MyOrders";
+import ManazeProducts from "./../../components/ManazeProducts/ManazeProducts";
+import ManazeAllOrders from "../../components/ManazeAllOrders/ManazeAllOrders";
 
 const drawerWidth = 180;
 
@@ -81,11 +78,11 @@ function DashBoard(props) {
           <Link to={`${url}/addProducts`}>
             <Button color="inherit">Add A product</Button>
           </Link>
-          <Link to={`${url}/addProducts`}>
-            <Button color="inherit">Manaze All Orders</Button>
-          </Link>
-          <Link to={`${url}/addProducts`}>
+          <Link to={`${url}/manageProduct`}>
             <Button color="inherit">Manage Products</Button>
+          </Link>
+          <Link to={`${url}/allOrders`}>
+            <Button color="inherit">Manage all Orders </Button>
           </Link>
         </Box>
       )}
@@ -199,6 +196,12 @@ function DashBoard(props) {
           </Route>
           <Route path={`${path}/myorder`}>
             <MyOrders />
+          </Route>
+          <Route path={`${path}/manageProduct`}>
+            <ManazeProducts />
+          </Route>
+          <Route path={`${path}/allOrders`}>
+            <ManazeAllOrders />
           </Route>
         </Switch>
       </Box>
