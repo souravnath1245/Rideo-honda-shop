@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar,Button } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
 import useAuth from "../hooks/useAuth";
 
@@ -14,14 +14,19 @@ const Navlink = () => {
     <>
       <Navbar fixed="top" expand="lg" bg="dark" variant="dark" collapseOnSelect>
         <Container>
-          <Navbar.Brand as={HashLink} to="/">Navbar</Navbar.Brand>
+          <Navbar.Brand as={HashLink} to="/">
+            Reido-Shop
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-          <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
+          <Navbar.Collapse
+            className="justify-content-end"
+            id="responsive-navbar-nav"
+          >
             <Nav.Link as={HashLink} to="/home#banner">
               Home
             </Nav.Link>
-            
+
             <Nav.Link as={HashLink} to="/home#products">
               Products
             </Nav.Link>
@@ -31,20 +36,20 @@ const Navlink = () => {
             <Nav.Link as={HashLink} to="/home#reviews">
               Reviews
             </Nav.Link>
-            
-            
 
             {user.email ? (
-              <Box>
+              <Box >
                 <Nav.Link as={HashLink} to="/dashboard">
-              DashBoard
-            </Nav.Link>
-              <button
-                onClick={handleLogOut}
-                className="btn btn-outline-primary text-white mx-2"
-              >
-                LogOut
-              </button>
+                  DashBoard
+                </Nav.Link>
+               
+                  <Nav.Link
+                    onClick={handleLogOut}
+                    className="btn btn-outline-primary text-white mx-2"
+                  >
+                    LogOut
+                  </Nav.Link>
+                
               </Box>
             ) : (
               <Nav.Link as={HashLink} to="/login">
