@@ -12,7 +12,7 @@ const ManazeAllOrders = () => {
     <div className="allOrdersSection">
       <h1>Client All Orders</h1>
       <div className="allOrders">
-        <Table striped bordered hover>
+        <Table responsive="sm" striped bordered hover>
           <thead>
             <tr>
               <th>Client Id </th>

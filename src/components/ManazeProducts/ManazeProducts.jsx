@@ -31,8 +31,8 @@ const ManazeProducts = () => {
     <div>
       <h1 className="text-center">WebSite All Products ...</h1>
       <div className="allProductSection">
-        <Table striped bordered hover>
-          <thead>
+        <Table  striped bordered hover responsive="sm">
+          <thead >
             <tr>
               <th>Product Id</th>
               <th>Product Name</th>
